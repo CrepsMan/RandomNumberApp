@@ -6,9 +6,7 @@
     <title>Random Number Line</title>
     <script>
       // Change this to your dynamic server's URL:
-      const socket = new WebSocket(
-        "https://crepsman.github.io/RandomNumberApp/"
-      );
+      const socket = new WebSocket("ws://your-dynamic-server.herokuapp.com");
 
       socket.onmessage = function (event) {
         document.getElementById("random-numbers").innerText = event.data;
