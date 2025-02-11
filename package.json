@@ -1,0 +1,15 @@
+{
+  "name": "random-number-app",
+  "version": "1.0.0",
+  "description": "A simple application that generates a random line of 5 numbers and broadcasts it to connected clients every 10 seconds.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "ws": "^7.4.6"
+  },
+  "author": "",
+  "license": "ISC"
+}
