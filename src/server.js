@@ -5,7 +5,7 @@ const http = require("http");
 const WebSocket = require("ws");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, "public");
 
 app.use(express.static(publicPath));
@@ -23,6 +23,7 @@ function generateRandomNumbers() {
   }
   return numbers.join(" ");
 }
+
 function updateAndBroadcast() {
   currentNumbers = generateRandomNumbers();
   fs.writeFile(filePath, currentNumbers, (err) => {
@@ -45,9 +46,10 @@ wss.on("connection", (ws) => {
   }
 });
 
+// Initial update then update every 10 seconds
 updateAndBroadcast();
 setInterval(updateAndBroadcast, 10000);
 
 server.listen(port, () => {
-  console.log(`Server is listening on http://localhost:${port}`);
+  console.log(`Server is listening on port ${port}`);
 });
